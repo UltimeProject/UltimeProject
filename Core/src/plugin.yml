@@ -1,0 +1,13 @@
+name:
+author:
+version:
+main: fr.nukerhd.ultime.core.UltimeCore
+description: Coeur d'UltimeProject
+commands:
+  core:
+    description: Permet d'affiché le status du coeur
+  database:
+    aliases: db
+    description: Permet d'affiché le status de la base de données
+  sanction:
+    description: Permet de sanctionné un joueur
