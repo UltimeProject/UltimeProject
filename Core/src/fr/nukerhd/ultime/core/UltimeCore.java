@@ -12,6 +12,8 @@ public class UltimeCore
     
     private PluginInfos pluginInfos;
     
+    /* Getters */
+    
     @Override
     public void onEnable()
     {
@@ -23,4 +25,5 @@ public class UltimeCore
     {
         return pluginInfos;
     }
+    
 }

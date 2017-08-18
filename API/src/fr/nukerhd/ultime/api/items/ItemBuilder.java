@@ -19,7 +19,7 @@ public class ItemBuilder
     {
         itemStack = new ItemStack(material);
     }
-    
+
     public ItemBuilder(Material material, int amount)
     {
         itemStack = new ItemStack(material, amount);
