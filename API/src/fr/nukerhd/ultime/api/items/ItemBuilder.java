@@ -46,4 +46,9 @@ public class ItemBuilder
         return this;
     }
     
+    public ItemStack toItemStack()
+    {
+        return itemStack;
+    }
+    
 }

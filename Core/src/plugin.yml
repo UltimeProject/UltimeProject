@@ -11,3 +11,5 @@ commands:
     description: Permet d'affiché le status de la base de données
   sanction:
     description: Permet de sanctionné un joueur
+  ultimeproject:
+    description: Affiche les informations à propos du projet
