@@ -1,0 +1,20 @@
+.idea
+*.iml
+out
+gen### Java template
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+.gitignore
+.idea/
+API/API.iml
+Core/Core.iml
+UltimeProject.iml
