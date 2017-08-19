@@ -13,18 +13,11 @@ public class UltimeCore
     
     private PluginInfos pluginInfos;
     
-    /* Getters */
-    
     @Override
     public void onEnable()
     {
         super.onEnable();
         pluginInfos = new PluginInfos(this);
-    }
-    
-    public PluginInfos getPluginInfos()
-    {
-        return pluginInfos;
     }
     
 }

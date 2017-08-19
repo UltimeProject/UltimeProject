@@ -2,6 +2,7 @@ package fr.nukerhd.ultime.api.player;
 
 import fr.nukerhd.ultime.api.player.currency.UltimeCurrency;
 import fr.nukerhd.ultime.api.player.rank.UltimeRank;
+import fr.nukerhd.ultime.api.translate.language.Languages;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
@@ -18,9 +19,17 @@ public class UltimePlayer
     private UltimeRank     rank;
     private UltimeCurrency ultimeCurrency;
     
+    private Languages lang;
+    
     public UltimePlayer(Player player)
     {
         this.player = player;
+    }
+    
+    
+    public Languages getLang()
+    {
+        return lang;
     }
     
     public void sendTitle(String title, String subTitle)

@@ -19,8 +19,15 @@ public class UltimeProjectCommand
     public UltimeProjectCommand(UltimeCore core)
     {
         this.core = core;
-        for(String author : core.getPluginInfos().getAuthors())
-            authors.append(author + " ");
+        int i = core.getPluginInfos().getAuthors().size();
+        for (String author : core.getPluginInfos().getAuthors())
+        {
+            if(i != 1)
+                authors.append(author + ", ");
+            else
+                authors.append(author);
+            i--;
+        }
     }
     
     @Override
