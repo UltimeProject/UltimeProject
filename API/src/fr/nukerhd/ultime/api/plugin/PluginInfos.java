@@ -40,7 +40,6 @@ public class PluginInfos
         return website;
     }
     
-    
     public String getDescription()
     {
         return description;
@@ -50,4 +49,5 @@ public class PluginInfos
     {
         return authors;
     }
+    
 }

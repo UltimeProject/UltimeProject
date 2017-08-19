@@ -1,24 +1,24 @@
-package fr.nukerhd.ultime.core;
+package fr.nukerhd.ultime.api.plugin;
 
-import fr.nukerhd.ultime.api.plugin.PluginInfos;
-import fr.nukerhd.ultime.api.plugin.UltimePlugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Crée le 18/08/2017 par NukerHD pour UltimeProject !
+ * Crée le 19/08/2017 par NukerHD pour UltimeProject !
  */
-public class UltimeCore
-        extends UltimePlugin
+public class UltimePlugin
+        extends JavaPlugin
 {
-    
+
     private PluginInfos pluginInfos;
-    
-    /* Getters */
     
     @Override
     public void onEnable()
     {
         super.onEnable();
+    }
+    
+    private void initialize()
+    {
         pluginInfos = new PluginInfos(this);
     }
     
@@ -26,5 +26,4 @@ public class UltimeCore
     {
         return pluginInfos;
     }
-    
 }
