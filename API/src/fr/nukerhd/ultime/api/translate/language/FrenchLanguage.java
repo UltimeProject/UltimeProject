@@ -7,20 +7,21 @@ public enum FrenchLanguage
 {
     
     NO_PERMISSION("no.permission", "§cVous n'avez pas accès à cette commande."),
+    RANK_COMMAND("rank.show", "§2Vous êtes <rank>."),
     COINS_COMMAND("coins.show", "§2Vous avez <coins> Coins."),
     ULTIMECOINS_COMMAND("ultimecoins.show", "§2Vous avez <ultimecoins> Ultime Coins.");
     
-    private String name, message;
+    private String messageName, message;
     
-    FrenchLanguage(String name, String message)
+    FrenchLanguage(String messageName, String message)
     {
-        this.name = name;
+        this.messageName = messageName;
         this.message = message;
     }
     
-    public String getName()
+    public String getMessageName()
     {
-        return name;
+        return messageName;
     }
     
     public String getMessage()
