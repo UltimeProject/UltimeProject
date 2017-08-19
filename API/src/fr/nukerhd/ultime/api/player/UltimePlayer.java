@@ -1,5 +1,11 @@
 package fr.nukerhd.ultime.api.player;
 
+import fr.nukerhd.ultime.api.player.currency.UltimeCurrency;
+import fr.nukerhd.ultime.api.player.rank.UltimeRank;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -8,16 +14,70 @@ import org.bukkit.entity.Player;
 public class UltimePlayer
 {
     
-    private Player player;
-    
+    private Player         player;
+    private UltimeRank     rank;
+    private UltimeCurrency ultimeCurrency;
     
     public UltimePlayer(Player player)
     {
         this.player = player;
     }
     
-    public Player getPlayer()
+    public void sendTitle(String title, String subTitle)
     {
-        return player;
+        new TitleBuilder(title, subTitle).build();
     }
+    
+    public void sendActionBar(String text)
+    {
+        new ActionBarBuilder(text).build();
+    }
+    
+    private class TitleBuilder
+    {
+        
+        private String title, subTitle;
+        private final int ticks = 1 * 20;
+        
+        public TitleBuilder(
+                String title,
+                String subTitle)
+        {
+            this.title = title;
+            this.subTitle = subTitle;
+        }
+        
+        public void build()
+        {
+            IChatBaseComponent titleComponent    = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + title + "\"}");
+            IChatBaseComponent subTitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subTitle + "\"}");
+            PacketPlayOutTitle titlePacket       = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
+            PacketPlayOutTitle subTitlePacket    = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subTitleComponent);
+            PacketPlayOutTitle timePacket        = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TIMES, null, 20, ticks, 20);
+            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(titlePacket);
+            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(subTitlePacket);
+            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(timePacket);
+            
+        }
+        
+    }
+    
+    private class ActionBarBuilder
+    {
+        private String text;
+        
+        public ActionBarBuilder(String text)
+        {
+            this.text = text;
+        }
+        
+        public void build()
+        {
+            IChatBaseComponent actionBarComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + text + "\"}");
+            PacketPlayOutChat  actionBarPacket    = new PacketPlayOutChat(actionBarComponent, (byte) 2);
+            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(actionBarPacket);
+        }
+        
+    }
+    
 }
