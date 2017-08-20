@@ -29,7 +29,7 @@ public class UltimePlayer
     
     public void sendMessage(String message, boolean prefix)
     {
-    
+        player.sendMessage(prefix + message);
     }
     
     public Languages getLang()

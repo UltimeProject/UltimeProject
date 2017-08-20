@@ -33,12 +33,31 @@ public enum UltimeRank
            "",
            0);
     
+    private String prefix, suffix;
+    private int power;
+    
     UltimeRank(
             String prefix,
             String suffix,
             int power)
     {
-    
+        this.prefix = prefix;
+        this.suffix = suffix;
+        this.power = power;
     }
     
+    public String getPrefix()
+    {
+        return prefix;
+    }
+    
+    public String getSuffix()
+    {
+        return suffix;
+    }
+    
+    public int getPower()
+    {
+        return power;
+    }
 }
